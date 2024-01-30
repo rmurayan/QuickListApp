@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "FinalApp",
-    "slug": "FinalApp",
+    "name": "QuickPickListApp",
+    "slug": "QuickPickList",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.jpg",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
