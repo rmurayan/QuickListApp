@@ -1,7 +1,7 @@
 // ItemModal.js
 import { Modal, View, Text, TextInput, Pressable } from 'react-native';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 const ItemModal = ({
   modalVisible,
   editItemIndex,
@@ -30,7 +30,7 @@ const ItemModal = ({
           >
             <FontAwesome5Icon
               size={20}
-              color={'#508D69'}
+              color={'#54A695'}
               name="times"
               style={{
                 marginLeft: 8,
@@ -46,7 +46,9 @@ const ItemModal = ({
               value={editItemIndex !== null ? editItemName : itemName}
               style={modelStyle.textInput}
               onChangeText={(text) =>
-                editItemIndex !== null ? setEditItemName(text.toLowerCase()) : setItemName(text.toLowerCase())
+                editItemIndex !== null
+                  ? setEditItemName(text.toLowerCase())
+                  : setItemName(text.toLowerCase())
               }
             />
           </View>
@@ -57,7 +59,9 @@ const ItemModal = ({
               style={modelStyle.textInput}
               keyboardType="numeric"
               onChangeText={(text) =>
-                editItemIndex !== null ? setEditQuantity(text) : setQuantity(text)
+                editItemIndex !== null
+                  ? setEditQuantity(text)
+                  : setQuantity(text)
               }
             />
           </View>
@@ -74,53 +78,53 @@ const ItemModal = ({
 const modelStyle = StyleSheet.create({
   centeredView: {
     flex: 1,
-    backgroundColor: "rgba(0,0,0,0.7)",
+    backgroundColor: 'rgba(0,0,0,0.7)',
     marginBottom: 80,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   modalView: {
     margin: 20,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderRadius: 20,
     padding: 40,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2
-    }
+      height: 2,
+    },
   },
-    modalText: {
-      marginBottom: 15,
-      fontSize: 18,
-      textAlign: "center",
-      fontWeight: "500",
-    },
-    textLabel: {
-      color: "grey",
-      fontSize: 14,
-      fontWeight: "600",
-      marginBottom: 5,
-    },
-    textInput: {
-      borderWidth: 1,
-      borderRadius: 5,
-      height: 30,
-      borderColor: "#ccc",
-      paddingLeft: 5,
-    },
-    doneBtnWrapper: {
-      backgroundColor: '#508D69',
-      borderRadius: 50,
-      marginTop: 10,
-    },
-    doneText: {
-      color: "white",
-      paddingTop: 12,
-      paddingBottom: 12,
-      fontSize: 18,
-      fontWeight: "600",
-      textAlign: "center",
-    },
-  });
+  modalText: {
+    marginBottom: 15,
+    fontSize: 18,
+    textAlign: 'center',
+    fontWeight: '500',
+  },
+  textLabel: {
+    color: 'grey',
+    fontSize: 14,
+    fontWeight: '600',
+    marginBottom: 5,
+  },
+  textInput: {
+    borderWidth: 1,
+    borderRadius: 5,
+    height: 30,
+    borderColor: '#ccc',
+    paddingLeft: 5,
+  },
+  doneBtnWrapper: {
+    backgroundColor: '#54A695',
+    borderRadius: 50,
+    marginTop: 10,
+  },
+  doneText: {
+    color: 'white',
+    paddingTop: 12,
+    paddingBottom: 12,
+    fontSize: 18,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+});
 
 export default ItemModal;
