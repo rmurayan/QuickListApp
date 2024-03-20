@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { RenderListItem } from "../screens/ItemListRender";
-import ItemModal from "../screens/ItemModal";
+import React, { useState, useEffect } from 'react';
+import { RenderListItem } from '../screens/ItemListRender';
+import ItemModal from '../screens/ItemModal';
 import {
   updateDatabase,
   addItemToDatabase,
   deleteItemFromDatabase,
   getListFromDatabase,
-} from "../Ultis/ databaseUtils";
+} from '../Ultis/ databaseUtils';
 
 import {
   View,
@@ -16,27 +16,27 @@ import {
   ImageBackground,
   Alert,
   Image,
-} from "react-native";
-import { auth } from "../Ultis/DB";
-import { screenStyle } from "../Ultis/Styles";
+} from 'react-native';
+import { auth } from '../Ultis/DB';
+import { screenStyle } from '../Ultis/Styles';
 const FruitVegScreen = () => {
   const [items, setItems] = useState([]);
-  const [itemName, setItemName] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [itemName, setItemName] = useState('');
+  const [quantity, setQuantity] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [editItemIndex, setEditItemIndex] = useState(null);
-  const [editItemName, setEditItemName] = useState("");
-  const [editQuantity, setEditQuantity] = useState("");
+  const [editItemName, setEditItemName] = useState('');
+  const [editQuantity, setEditQuantity] = useState('');
 
-  const listPath = "FruitVegList";
+  const listPath = 'FruitVegList';
 
   const clearFields = () => {
     setModalVisible(!modalVisible);
-    setItemName("");
-    setQuantity("");
+    setItemName('');
+    setQuantity('');
     setEditItemIndex(null);
-    setEditItemName("");
-    setEditQuantity("");
+    setEditItemName('');
+    setEditQuantity('');
   };
   const getList = () => {
     getListFromDatabase(getListPath(), setItems);
@@ -54,7 +54,10 @@ const FruitVegScreen = () => {
       };
       const itemExists = items.some((item) => item.name === newItem.name);
       if (itemExists && editItemIndex == null) {
-        Alert.alert("Item existed",`Item ${newItem.name} already exists in the list`);
+        Alert.alert(
+          'Item existed',
+          `Item ${newItem.name} already exists in the list`
+        );
       } else {
         if (editItemIndex !== null) {
           const updatedData = items.map((item, index) =>
@@ -97,15 +100,15 @@ const FruitVegScreen = () => {
 
   const deleteItem = (index) => {
     Alert.alert(
-      "Delete Item",
-      "Are you sure you want to delete this item?",
+      'Delete Item',
+      'Are you sure you want to delete this item?',
       [
         {
-          text: "No",
-          style: "cancel",
+          text: 'No',
+          style: 'cancel',
         },
         {
-          text: "Yes",
+          text: 'Yes',
           onPress: () => {
             const updatedItems = [...items];
             updatedItems.splice(index, 1);
@@ -120,7 +123,7 @@ const FruitVegScreen = () => {
 
   return (
     <ImageBackground
-      source={require("../assets/BG.jpg")}
+      source={require('../assets/BG.png')}
       style={{
         flex: 1,
       }}
@@ -128,7 +131,7 @@ const FruitVegScreen = () => {
       <View style={screenStyle.container}>
         {items.length === 0 ? (
           <Image
-            source={require("../assets/emptyCart.jpg")}
+            source={require('../assets/emptyCart.png')}
             style={{ width: 300, height: 300 }}
           />
         ) : (

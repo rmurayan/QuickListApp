@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { screenStyle } from "../Ultis/Styles";
-import { RenderListItem } from "../screens/ItemListRender";
-import ItemModal from "../screens/ItemModal";
+import React, { useState, useEffect } from 'react';
+import { screenStyle } from '../Ultis/Styles';
+import { RenderListItem } from '../screens/ItemListRender';
+import ItemModal from '../screens/ItemModal';
 import {
   updateDatabase,
   addItemToDatabase,
   deleteItemFromDatabase,
   getListFromDatabase,
-} from "../Ultis/ databaseUtils";
+} from '../Ultis/ databaseUtils';
 import {
   View,
   Text,
@@ -16,18 +16,18 @@ import {
   ImageBackground,
   Alert,
   Image,
-} from "react-native";
-import { auth } from "../Ultis/DB";
+} from 'react-native';
+import { auth } from '../Ultis/DB';
 
 const MeatFrozenScreen = () => {
   const [items, setItems] = useState([]);
-  const [itemName, setItemName] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [itemName, setItemName] = useState('');
+  const [quantity, setQuantity] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [editItemIndex, setEditItemIndex] = useState(null);
-  const [editItemName, setEditItemName] = useState("");
-  const [editQuantity, setEditQuantity] = useState("");
-  const listPath = "MeatFrozenList";
+  const [editItemName, setEditItemName] = useState('');
+  const [editQuantity, setEditQuantity] = useState('');
+  const listPath = 'MeatFrozenList';
 
   const getCurrentUser = () => {
     return auth.currentUser.uid;
@@ -39,11 +39,11 @@ const MeatFrozenScreen = () => {
 
   const clearFields = () => {
     setModalVisible(!modalVisible);
-    setItemName("");
-    setQuantity("");
+    setItemName('');
+    setQuantity('');
     setEditItemIndex(null);
-    setEditItemName("");
-    setEditQuantity("");
+    setEditItemName('');
+    setEditQuantity('');
   };
 
   const getList = () => {
@@ -63,7 +63,7 @@ const MeatFrozenScreen = () => {
       const itemExists = items.some((item) => item.name === newItem.name);
       if (itemExists && editItemIndex == null) {
         Alert.alert(
-          "Item existed",
+          'Item existed',
           `Item ${newItem.name} already exists in the list`
         );
       } else {
@@ -81,7 +81,7 @@ const MeatFrozenScreen = () => {
         clearFields();
       }
     }
-  }
+  };
   const startEdit = (index) => {
     const itemToEdit = items[index];
     setEditItemIndex(index);
@@ -100,15 +100,15 @@ const MeatFrozenScreen = () => {
 
   const deleteItem = (index) => {
     Alert.alert(
-      "Delete Item",
-      "Are you sure you want to delete this item?",
+      'Delete Item',
+      'Are you sure you want to delete this item?',
       [
         {
-          text: "No",
-          style: "cancel",
+          text: 'No',
+          style: 'cancel',
         },
         {
-          text: "Yes",
+          text: 'Yes',
           onPress: () => {
             const updatedItems = [...items];
             updatedItems.splice(index, 1);
@@ -123,7 +123,7 @@ const MeatFrozenScreen = () => {
 
   return (
     <ImageBackground
-      source={require("../assets/BG.jpg")}
+      source={require('../assets/BG.png')}
       style={{
         flex: 1,
       }}
@@ -131,7 +131,7 @@ const MeatFrozenScreen = () => {
       <View style={screenStyle.container}>
         {items.length === 0 ? (
           <Image
-            source={require("../assets/emptyCart.jpg")}
+            source={require('../assets/emptyCart.png')}
             style={{ width: 300, height: 300 }}
           />
         ) : (
